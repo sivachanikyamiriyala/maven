@@ -26,7 +26,7 @@ stages
     }
     stage('continuous testing')
     {
-    stages
+    steps
      {
      git 'https://github.com/sivachanikyamiriyala/FunctionalTesting.git'
      sh 'java -jar testing.jar'
