@@ -21,7 +21,7 @@ stages
     {
      steps
        {
-        sh 'scp /home/ubuntu/.jenkins/workspace/multibranchpipeline_master/webapp/target/webapp.war ubuntu@172.31.85.133:/var/lib/tomcat8/webapps/aa.war'
+        sh 'scp /home/ubuntu/.jenkins/workspace/declarativepipeline/webapp/target/webapp.war ubuntu@172.31.85.133:/var/lib/tomcat8/webapps/aa.war'
        }
     }
  }
