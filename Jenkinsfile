@@ -1,24 +1,28 @@
-node('master')
+pipeline
 {
- stage('continuous download')
+agent any
+stages
  {
-  git 'https://github.com/sivachanikyamiriyala/maven.git'
+  stage('continuous download')
+   {
+    steps
+    {
+    git 'https://github.com/sivachanikyamiriyala/maven.git'
+    }
+   }
+   stage('continuous build')
+    {
+    steps
+     {
+     sh 'mvn package'
+     }
+    }
+    stage('continuous deploymnet')
+    {
+     steps
+       {
+        sh 'scp /home/ubuntu/.jenkins/workspace/multibranchpipeline_master/webapp/target/webapp.war ubuntu@172.31.85.133:/var/lib/tomcat8/webapps/aa.war'
+       }
+    }
  }
- stage('continuous build')
- {
- sh 'mvn package'
- }
- stage('continuous deployment')
-  {
-  sh 'scp /home/ubuntu/.jenkins/workspace/multobranchpipeline_master/webapp/target/webapp.war ubuntu@172.31.83.217:/var/lib/tomcat8/webapps/11.war'
-  }
-  stage('continuous testing')
-  {
-  git 'https://github.com/sivachanikyamiriyala/FunctionalTesting.git'
-  sh 'java -jar testing.jar'
-  }
-  stage('continuous delivery')
-  {
-    sh 'scp /home/ubuntu/.jenkins/workspace/multobranchpipeline_master/webapp/target/webapp.war ubuntu@ 172.31.89.142:/var/lib/tomcat8/webapps/2222.war'
-  }
 }
