@@ -32,5 +32,13 @@ stages
      sh 'java -jar testing.jar'
      }
     }
+    stage('continuous delivery')
+    {
+     steps
+     {
+     input message: 'waiting for approval', submitter: 'siva'
+     sh 'scp /home/ubuntu/.jenkins/workspace/declarativepipeline/webapp/target/webapp.war ubuntu@:172.31.82.251:/var/lib/tomcat8/webapps/cc.war'
+     }
+    }
  }
 }
