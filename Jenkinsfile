@@ -1,44 +1,25 @@
-pipeline
-{
-agent any
-stages
+node('master')
  {
-  stage('continuous download')
+ stage('comtinuous download')
+  { 
+   git 'https://github.com/sivachanikyamiriyala/maven.git'
+  }
+  stage('continuous build')
    {
-    steps
-    {
-    git 'https://github.com/sivachanikyamiriyala/maven.git'
-    }
+    sh 'mvn package'
+   } 
+  stage('continuous deployment')
+   {
+    sh 'scp /home/ubuntu/.jenkins/workspace/scriptedpipeline/webapp/target/webapp.war ubuntu@172.31.16.248:/var/lib/tomcat8/webapps/krishna.war'
    }
-   stage('continuous build')
+   stage('continuous testing')
     {
-    steps
-     {
-     sh 'mvn package'
-     }
-    }
-    stage('continuous deploymnet')
-    {
-     steps
-       {
-        sh 'scp /home/ubuntu/.jenkins/workspace/declarativepipeline/webapp/target/webapp.war ubuntu@172.31.85.133:/var/lib/tomcat8/webapps/aa.war'
-       }
-    }
-    stage('continuous testing')
-    {
-    steps
-     {
-     git 'https://github.com/sivachanikyamiriyala/FunctionalTesting.git'
-     sh 'java -jar testing.jar'
-     }
+    git 'https://github.com/sivachanikyamiriyala/FunctionalTesting.git'
+    sh 'cd /home/ubuntu/.jenkins/workspace/FunctionalTesting/testing.jar'
     }
     stage('continuous delivery')
-    {
-     steps
      {
-     input message: 'waiting for approval', submitter: 'siva'
-     sh 'scp /home/ubuntu/.jenkins/workspace/declarativepipeline/webapp/target/webapp.war ubuntu@:172.31.82.251:/var/lib/tomcat8/webapps/cc.war'
+     input message: 'waiting for approval', submitter: 'sivam'
+     sh 'scp /home/ubuntu/.jenkins/workspace/scriptedpipeline/webapp/target/webapp.war ubuntu@172.31.29.161:/var/lib/tomcat8/webapps/guntur.war'
      }
-    }
  }
-}
