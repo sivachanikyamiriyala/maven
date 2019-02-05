@@ -15,7 +15,6 @@ node('master')
    stage('continuous testing')
     {
     git 'https://github.com/sivachanikyamiriyala/FunctionalTesting.git'
-    sh 'cd /home/ubuntu/.jenkins/workspace/FunctionalTesting/testing.jar'
     }
     stage('continuous delivery')
      {
