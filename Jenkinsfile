@@ -29,7 +29,6 @@ stages
     steps
      {
      git 'https://github.com/sivachanikyamiriyala/FunctionalTesting.git'
-     sh 'java -jar /home/ubuntu/.jenkins/workspace/FunctionalTesting/testing.jar'
      }
     }
   }
