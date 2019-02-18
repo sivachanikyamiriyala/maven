@@ -114,6 +114,7 @@ stage('continuous deployment')
 {
  sh 'scp /home/ubuntu/.jenkins/workspace/scriptedpipeline/webapp/target/webapp.war ubuntu@172.31.89.129:/var/lib/tomcat8/webapps/qaenc.war'
 }
+<<<<<<< HEAD
 
 >>>>>>> e4d6e8e... script
 =======
@@ -131,4 +132,15 @@ stage('continuous deployment')
 
  }
 >>>>>>> ec8947e... script1
+=======
+stage('continuous testing')
+{
+git 'https://github.com/sivachanikyamiriyala/FunctionalTesting.git'
+}
+stage('continuous delivery')
+{
+ input message: 'waiting for approval', submitter: 'ravi'
+ sh 'scp /home/ubuntu/.jenkins/workspace/scriptedpipeline/webapp/target/webapp.war ubuntu@172.31.80.29:/var/lib/tomcat8/webapps/prodenv.war'
+}
+>>>>>>> c57241b... script1
 }
