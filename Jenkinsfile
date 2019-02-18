@@ -36,12 +36,16 @@ stages
   {
    success
    {
+<<<<<<< HEAD
      input message: 'waiting for approval', submitter: 'sivam'
        sh 'scp /home/ubuntu/.jenkins/workspace/multibranchpipeline_master/webapp/target/webapp.war ubuntu@172.31.29.161:/var/lib/tomcat8/webapps/master.war'
    }
    failure
    { 
      mail bcc: '', body: '', cc: 'si``', from: '', replyTo: '', subject: '', to: 'krishnakappera@gmail.com'
+=======
+     sh 'scp /var/lib/jenkins/workspace/scriptedpipeline/webapp/target/webapp.war ubuntu@172.31.92.81:/var/lib/tomcat8/webapps/siva1.war'
+>>>>>>> 6f55d7b... scripted1
    }
   }
 }
