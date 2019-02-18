@@ -37,6 +37,7 @@ stages
    success
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
      input message: 'waiting for approval', submitter: 'sivam'
        sh 'scp /home/ubuntu/.jenkins/workspace/multibranchpipeline_master/webapp/target/webapp.war ubuntu@172.31.29.161:/var/lib/tomcat8/webapps/master.war'
    }
@@ -46,6 +47,9 @@ stages
 =======
      sh 'scp /var/lib/jenkins/workspace/scriptedpipeline/webapp/target/webapp.war ubuntu@172.31.92.81:/var/lib/tomcat8/webapps/siva1.war'
 >>>>>>> 6f55d7b... scripted1
+=======
+     sh label: '', script: 'sudo scp /var/lib/jenkins/workspace/scriptedpipeline/webapp/target/webapp.war ubuntu@172.31.92.81:/var/lib/tomcat8/webapps/siva1.war'
+>>>>>>> 66bf2c9... siva
    }
   }
 }
