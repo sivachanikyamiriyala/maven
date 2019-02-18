@@ -3,6 +3,7 @@ pipeline
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 agent master
 stages
   {
@@ -68,6 +69,10 @@ stage('continuous download')
 agent any
 stages
 >>>>>>> ec8947e... script1
+=======
+agent any
+stages
+>>>>>>> 43516bf... dd
  {
   stage('continuous download')
    {
@@ -87,7 +92,11 @@ stages
    {
    steps
    {
+<<<<<<< HEAD
     sh 'scp /home/ubuntu/.jenkins/workspace/multibranchpipeline_master/webapp/target/webapp.war ubuntu@172.31.89.129:/var/lib/tomcat8/webapps/11.war'
+=======
+    sh 'scp /home/ubuntu/.jenkins/workspace/declarativepipeline/webapp/target/webapp.war ubuntu@172.31.89.129:/var/lib/tomcat8/webapps/11.war'
+>>>>>>> 43516bf... dd
    }
    }
    stage('continuous testing')
@@ -100,6 +109,7 @@ stages
  }
  post
  {
+<<<<<<< HEAD
 <<<<<<< HEAD
  sh 'mvn package'
  }
@@ -143,4 +153,19 @@ stage('continuous delivery')
  sh 'scp /home/ubuntu/.jenkins/workspace/scriptedpipeline/webapp/target/webapp.war ubuntu@172.31.80.29:/var/lib/tomcat8/webapps/prodenv.war'
 }
 >>>>>>> c57241b... script1
+=======
+  success
+  {
+  input message: 'waiting for approval', submitter: 'ravi'
+   sh 'scp /home/ubuntu/.jenkins/workspace/declarativepipeline/webapp/target/webapp.war ubuntu@172.31.80.29:/var/lib/tomcat8/webapps/22.war
+  }
+  failure
+  {
+  mail bcc: '', body: 'check once', cc: 'ravi@gmail.com', from: '', replyTo: '', subject: 'delivery failed', to: 'sivachanikyamiriyala@gmail.com'
+  }
+
+
+
+ }
+>>>>>>> 43516bf... dd
 }
