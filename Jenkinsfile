@@ -157,7 +157,7 @@ stage('continuous delivery')
   success
   {
   input message: 'waiting for approval', submitter: 'ravi'
-   sh 'scp /home/ubuntu/.jenkins/workspace/declarativepipeline/webapp/target/webapp.war ubuntu@172.31.80.29:/var/lib/tomcat8/webapps/22.war
+   sh 'scp /home/ubuntu/.jenkins/workspace/declarativepipeline/webapp/target/webapp.war ubuntu@172.31.80.29:/var/lib/tomcat8/webapps/22.war'
   }
   failure
   {
