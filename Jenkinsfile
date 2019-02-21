@@ -6,18 +6,28 @@ pipeline
 <<<<<<< HEAD
 agent master
 stages
+<<<<<<< HEAD
 {
   stage('continuous download')
   {
     steps
     {
     git credentialsId: 'c190c724-871e-45c8-a1a3-ab6ddcc2db7c', url: 'https://github.com/sivachanikyamiriyala/maven.git'
+=======
+ {
+  stage('continuous download')
+   {
+    steps
+    { 
+    git 'https://github.com/sivachanikyamiriyala/maven.git'
+>>>>>>> 35e560272885da331b7509c5d070f054cfc71938
     }
   }  
   stage('continuous build')
   {
    steps
    {
+<<<<<<< HEAD
      sh 'mvn package'
    }
   }
@@ -44,8 +54,40 @@ stages
 =======
      sh 'scp /var/lib/jenkins/workspace/scriptedpipeline/webapp/target/webapp.war ubuntu@172.31.92.81:/var/lib/tomcat8/webapps/siva44.war'
 >>>>>>> 4863d9e... siva1
+=======
+   steps
+   {
+   sh 'mvn package'
    }
+   }
+   stage('continuous deployment')
+   {
+   steps
+   {
+    sh 'scp /home/ubuntu/.jenkins/workspace/multibranchpipeline_master/webapp/target/webapp.war ubuntu@172.31.89.129:/var/lib/tomcat8/webapps/11.war'
+   }
+   }
+   stage('continuous testing')
+   {
+   steps
+   {
+     git 'https://github.com/sivachanikyamiriyala/FunctionalTesting.git'
+   }
+>>>>>>> 35e560272885da331b7509c5d070f054cfc71938
+   }
+ }
+ post
+ {
+  success
+  {
+  input message: 'waiting for approval', submitter: 'ravi'
+   sh 'scp /home/ubuntu/.jenkins/workspace/multibranchpipeline_master/webapp/target/webapp.war ubuntu@172.31.80.29:/var/lib/tomcat8/webapps/22.war'
   }
+  failure
+  {
+  mail bcc: '', body: 'check once', cc: 'ravi@gmail.com', from: '', replyTo: '', subject: 'delivery failed', to: 'sivachanikyamiriyala@gmail.com'
+  }
+<<<<<<< HEAD
 =======
  stage('continuous download')
 =======
@@ -156,10 +198,15 @@ stage('continuous delivery')
   {
   mail bcc: '', body: 'check once', cc: 'ravi@gmail.com', from: '', replyTo: '', subject: 'delivery failed', to: 'sivachanikyamiriyala@gmail.com'
   }
+=======
+>>>>>>> 35e560272885da331b7509c5d070f054cfc71938
 
 
 
  }
+<<<<<<< HEAD
 >>>>>>> 43516bf... dd
 }
+=======
+>>>>>>> 35e560272885da331b7509c5d070f054cfc71938
 }
