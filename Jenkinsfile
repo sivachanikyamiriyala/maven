@@ -87,7 +87,7 @@ stages
    {
    steps
    {
-    sh 'scp /home/ubuntu/.jenkins/workspace/declarativepipeline/webapp/target/webapp.war ubuntu@172.31.89.129:/var/lib/tomcat8/webapps/11.war'
+    sh 'scp /home/ubuntu/.jenkins/workspace/multibranchpipeline_master/webapp/target/webapp.war ubuntu@172.31.89.129:/var/lib/tomcat8/webapps/11.war'
    }
    }
    stage('continuous testing')
@@ -120,7 +120,7 @@ stage('continuous deployment')
   success
   {
   input message: 'waiting for approval', submitter: 'ravi'
-   sh 'scp /home/ubuntu/.jenkins/workspace/declarativepipeline/webapp/target/webapp.war ubuntu@172.31.80.29:/var/lib/tomcat8/webapps/22.war'
+   sh 'scp /home/ubuntu/.jenkins/workspace/multibranchpipeline_master/webapp/target/webapp.war ubuntu@172.31.80.29:/var/lib/tomcat8/webapps/22.war'
   }
   failure
   {
