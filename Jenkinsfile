@@ -15,6 +15,7 @@ node('master')
  }
  stage('continuous build')
  {
+ sh 'cd /home/ubuntu/.jenkins/scriptedpipeline'
  sh 'mvn package'
  }
  stage('continuous upload to nexus')
@@ -27,7 +28,7 @@ node('master')
  }
  stage('continuous deployment')
  {
-  sh 'scp /home/ubuntu/.jenkins/workspace/scriptedpipeline/webapp/taregt/webapp.war ubuntu@172.31.89.173:/var/lib/tomcat8/webapps/siva.war'
+  sh 'scp /home/ubuntu/.jenkins/workspace/scriptedpipeline/webapp/target/webapp.war ubuntu@172.31.89.173:/var/lib/tomcat8/webapps/siva.war'
  }
  stage('continuou testing')
  {
@@ -36,6 +37,6 @@ node('master')
  stage('continuous delivery')
  {
  input message: 'waiting for approval', submitter: 'siva'
-  sh 'scp /home/ubuntu/.jenkins/workspace/scriptedpipeline/webapp/taregt/webapp.war ubuntu@172.31.89.230:/var/lib/tomcat8/webapps/siva.war'
+  sh 'scp /home/ubuntu/.jenkins/workspace/scriptedpipeline/webapp/target/webapp.war ubuntu@172.31.89.230:/var/lib/tomcat8/webapps/siva.war'
  }
 }
