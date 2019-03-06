@@ -6,7 +6,7 @@ node('master')
  }
  stage('continuous compile')
  {
-  sh 'cd /home/ubuntu/.jenkins/workspace/scriptedpipeline
+  sh 'cd /home/ubuntu/.jenkins/workspace/scriptedpipeline'
   sh 'mvn compile'
  }
  stage('continuous code checking')
@@ -27,7 +27,7 @@ node('master')
  }
  stage('continuous deployment')
  {
-  sh 'scp /home/ubuntu/.jenkins/workspace/scriptedpipeline/webapp/taregt/webapp.war ubuntu@172.31.89.173:/var/lib/tomcat8/webapps/siva.war
+  sh 'scp /home/ubuntu/.jenkins/workspace/scriptedpipeline/webapp/taregt/webapp.war ubuntu@172.31.89.173:/var/lib/tomcat8/webapps/siva.war'
  }
  stage('continuou testing')
  {
@@ -37,6 +37,6 @@ node('master')
  {
  input message: 'waiting for approval', submitter: 'siva'
   sh 'scp /home/ubuntu/.jenkins/workspace/scriptedpipeline/webapp/taregt/webapp.war ubuntu@172.31.89.230:/var/lib/tomcat8/webapps/siva
-.war
+.war'
  }
 }
