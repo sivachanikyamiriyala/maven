@@ -36,7 +36,6 @@ node('master')
  stage('continuous delivery')
  {
  input message: 'waiting for approval', submitter: 'siva'
-  sh 'scp /home/ubuntu/.jenkins/workspace/scriptedpipeline/webapp/taregt/webapp.war ubuntu@172.31.89.230:/var/lib/tomcat8/webapps/siva
-.war'
+  sh 'scp /home/ubuntu/.jenkins/workspace/scriptedpipeline/webapp/taregt/webapp.war ubuntu@172.31.89.230:/var/lib/tomcat8/webapps/siva.war'
  }
 }
