@@ -6,12 +6,16 @@ node('master')
  }
  stage('continuous compile')
  {
-  sh 'cd /home/ubuntu/.jenkins/workspace/scriptedpipeline/
+  sh 'cd /home/ubuntu/.jenkins/workspace/scriptedpipeline
   sh 'mvn compile'
  }
  stage('continuous code checking')
  {
    tool name: 'sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+ }
+ stage('continuous build')
+ {
+ sh 'mvn package'
  }
  stage('continuous upload to nexus')
  {
