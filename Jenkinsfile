@@ -6,7 +6,6 @@ node('master')
  }
  stage('continuous compile')
  {
-  sh 'cd /home/ubuntu/.jenkins/workspace/scriptedpipeline'
   sh 'mvn compile'
  }
  stage('continuous code checking')
@@ -15,7 +14,6 @@ node('master')
  }
  stage('continuous build')
  {
- sh 'cd /home/ubuntu/.jenkins/scriptedpipeline'
  sh 'mvn package'
  }
  stage('continuous upload to nexus')
