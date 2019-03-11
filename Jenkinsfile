@@ -1,48 +1,25 @@
-pipeline
+node('master')
 {
-  agent any
-  stages
-   {
-    stage('continuous download')
-    {
-     steps
-     {
-      git 'https://github.com/sivachanikyamiriyala/maven.git'
-     }
-    }
-    stage('continuous build')
-    {
-     steps
-      {
-       sh 'mvn package'
-      }
-    }
-    stage('continuous deployment')
-    {
-     steps
-      {
-       sh 'scp /home/ubuntu/.jenkins/workspace/multibranchpipeline_master/webapp/target/webapp.war ubuntu@172.31.89.173:/var/lib/tomcat8/webapps/target/chanikya_master.war'
-      }
-    }
-    stage('continuous testing')
-    {
-     steps
-     {
-      git 'https://github.com/sivachanikyamiriyala/FunctionalTesting.git'
-     }
-    }
+ stage('continuous download')
+ {
+  git 'https://github.com/sivachanikyamiriyala/maven.git'
 
-   }
-   post
-   {
-    success
-    {
-     sh 'scp /home/ubuntu/.jenkins/workspace/multibranchpipeline_master/webapp/target/webapp.war ubuntu@172.31.89.230:/var/lib/tomcat8/webapps/target/chanikya_master.war'
-    }
-    failure
-    {
-      mail bcc: '', body: 'hi failed check once', cc: 'rockingsiva977@gmail.com', from: '', replyTo: '', subject: '', to: 'sivachanikyamiriyala@gmail.com'
-    }
-
-   }
-}   
+ }
+ stage('continuous build')
+ {
+  sh 'mvn package'
+ }
+ stage('continuous deployment')
+ {
+  sh 'scp /var/lib/jenkins/workspace/scriptedpipeline/webapp/target/webapp.war ubuntu@172.31.81.167:/var/lib/tomcat8/webapps/qaenv.war'
+ }
+ stage('continuous test')
+ {
+  git 'https://github.com/sivachanikyamiriyala/FunctionalTesting.git'
+ }
+ stage('continuous delivery')
+ {
+ input 'waiting for approval'
+ sh 'scp /var/lib/jenkins/workspace/scriptedpipeline/webapp/target/webapp.war ubuntu@172.31.87.59:/var/lib/tomcat8/webapps/prodenv.war'
+ }
+}
