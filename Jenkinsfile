@@ -1,6 +1,6 @@
 pipeline
 {
-agent master
+agent any
 stages
 {
   stage('continuoud download')
@@ -33,6 +33,7 @@ stages
   }
 }
 post
+{
 success
 {
    input 'waiting for approval'
@@ -42,5 +43,6 @@ failure
 {
   mail bcc: '', body: '''hi team
 build failed''', cc: 'manager1@gmail.com,teamlead1@gmail.com', from: '', replyTo: '', subject: 'failed check once', to: 'sivachanikyamiriyala@gmail.com'
+}
 }
 }
