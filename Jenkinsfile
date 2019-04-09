@@ -1,48 +1,24 @@
-pipeline
+node('master')
 {
-agent any
-stages
-{
-  stage('continuoud download')
+stage('continuous download')
   {
-    steps
-    {
-     git 'https://github.com/sivachanikyamiriyala/maven.git'
-    }
-  }
-  stage('continuous build')
+   git credentialsId: 'd33da85a-d377-4bdf-8ef8-b603954379af', url: 'https://github.com/sivachanikyamiriyala/maven.git'
+  } 
+stage('continuous build')
   {
-    steps
-    {
-      sh 'mvn package'
-    }
+   sh 'mvn package'
   }
-  stage('continupus deployment')
+stage('continuous deplyoment')
   {
-   steps
-   {
-    sh 'scp /var/lib/jenkins/workspace/declarativepipeline/webapp/target/webapp.war ubuntu@172.31.81.167:/var/lib/tomcat8/webapps/siva1.war'
-   }
+   sh 'scp /var/lib/jenkins/workspace/development/webapp/target/webapp.war ubuntu@172.31.83.70:/var/lib/tomcat8/webapps/siva1.war'
   }
-  stage('continuous test')
-  {
-   steps
-   {
-    git 'https://github.com/sivachanikyamiriyala/FunctionalTesting.git'
-   }
+stage('continuous test')
+ {
+  git credentialsId: 'd33da85a-d377-4bdf-8ef8-b603954379af', url: 'https://github.com/sivachanikyamiriyala/FunctionalTesting.git'
+ }
+stage('continuous delivery')
+ {
+   input message: 'waiting for approval', submitter: 'siva'
+   sh 'scp /var/lib/jenkins/workspace/development/webapp/target/webapp.war ubuntu@172.31.82.31:/var/lib/tomcat8/webapps/siva2.war'
   }
-}
-post
-{
-success
-{
-   input 'waiting for approval'
-   sh 'scp /var/lib/jenkins/workspace/declarativepipeline/webapp/target/webapp.war ubuntu@172.31.87.59:/var/lib/tomcat8/webapps/siva2.war'
-}
-failure
-{
-  mail bcc: '', body: '''hi team
-build failed''', cc: 'manager1@gmail.com,teamlead1@gmail.com', from: '', replyTo: '', subject: 'failed check once', to: 'sivachanikyamiriyala@gmail.com'
-}
-}
 }
