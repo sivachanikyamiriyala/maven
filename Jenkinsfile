@@ -21,7 +21,7 @@ stages
    {
     steps 
      {
-      sh 'scp /var/lib/jenkins/workspace/multibranch_master/webapp/target/webapp.war ubuntu@172.31.83.70:/var/lib/tomcat8/webapps/chanikya1.war'
+      sh 'scp /var/lib/jenkins/workspace/multibranch_master/webapp/target/webapp.war ubuntu@172.31.83.70:/var/lib/tomcat8/webapps/11.war'
      }
    }
   stage('continuous test')
@@ -37,7 +37,7 @@ post
 success
 {
   input message: 'waiting for approval', submitter: 'siva'
-  sh 'scp /var/lib/jenkins/workspace/multibranch_master/webapp/target/webapp.war ubuntu@172.31.82.31:/var/lib/tomcat8/webapps/chanikya2.war'
+  sh 'scp /var/lib/jenkins/workspace/multibranch_master/webapp/target/webapp.war ubuntu@172.31.82.31:/var/lib/tomcat8/webapps/22.war'
 }
 failure
 {
