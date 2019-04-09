@@ -1,6 +1,4 @@
-bh vcuq;c qbwu;
-kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk;ob;our
-krishna company
+bh vcuq;c qbwuwikbcbw;ljb;wibw;
 >>>>>>> a9b7d471b2b7e7f49fb824f27ae8fe3d62d0ff22
 de<<<<<< HEAD
 ckwhclhwdql<<<<<<< HEAD
