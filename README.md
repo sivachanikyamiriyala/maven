@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 i am siva
 <<<<<<< HEAWCHJBWQLI CBPWQEUDCWQEVRclidb lw2D
 kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk;ob;our
 krishna company
 >>>>>>>b;ib scb  a9b7d471b2b7e7f49fb824f27ae8fe3d62d0ff22
+=======
+bh vcuq;c qbwuwikbcbw;ljb;wibw;
+>>>>>>> a9b7d471b2b7e7f49fb824f27ae8fe3d62d0ff22
+>>>>>>> 95011370f4206e9a0163ceab0115f1538f47960c
 de<<<<<< HEAD
 ckwhclhwdql<<<<<<< HEAD
 =======egwegwe4g4w
@@ -26,3 +31,7 @@ pavan
 krishna
 >>>>>>> ddc2abf4f5a276fac941aef553fc2dc492414401
 jbdicqbLI 
+yjtjry6j
+shankar malaysia
+i am making some changes
+i made chages
