@@ -1,4 +1,4 @@
 FROM tomcat
-COPY target/*.war /usr/local/tomcat/webapps/siva.war
+COPY /var/lib/jenkins/workspace/pipeline/webapps/target/webapp.war /usr/local/tomcat/webapps/siva.war
 
 
