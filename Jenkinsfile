@@ -10,4 +10,8 @@ node('master')
      def mvnCMD = "${mvnHome}/bin/mvn"
      sh "${mvnCMD} package" 
     }
+   stage('docker build the image')
+   {
+    sh 'docker build -t siva927/tomcat .'
+   }
  }
