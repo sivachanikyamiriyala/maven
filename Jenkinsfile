@@ -26,4 +26,8 @@ node('master')
      {
         sh 'docker push siva927/tomcat'
      }
+   stage('pull and run the image') 
+    {
+    sh 'docker run --name appserver -d -p 8778:8080 --hostname=tomcat siva927/tomcat'
+    }
  }
