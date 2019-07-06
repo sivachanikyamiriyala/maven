@@ -12,6 +12,6 @@ node('master')
     }
    stage('docker build the image')
    {
-    sh 'docker build -t siva927/tomcat .'
+    sh 'docker build -t siva927/tomcat . '
    }
  }
