@@ -10,17 +10,6 @@ node('master')
         def mvnCMD = "${mvnHome}/bin/mvn"
         sh "${mvnCMD} sonar:sonar"
         sh "${mvnCMD} package" 
-      post
-      {
-        success
-              { 
-               mail bcc: '', body: 'hi all good', cc: 'manager@gmail.com', from: '', replyTo: '', subject: '', to: 'sivachanikyamiriyala@gmail.com'
-              }
-        failure
-             {
-               mail bcc: '', body: 'hi all bad', cc: 'manager@gmail.com', from: '', replyTo: '', subject: '', to: 'sivachanikyamiriyala@gmail.com'
-             }
-      }
     }
     stage('buildd the file')
     {
@@ -35,7 +24,7 @@ node('master')
     }
     stage('docker run')
     {
-        sh 'docker run --name drdr -d -p 8667:8080 siva927/tomcat:1' 
+        sh 'docker run --name drdr -d -p 7667:8080 siva927/tomcat:1' 
     }
    
 }
