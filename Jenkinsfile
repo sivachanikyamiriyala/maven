@@ -15,6 +15,15 @@ node('master')
    stage('docker build the image')
    {
     sh "docker build -t siva927/tomcat . "
-   }
-
+   } 
+   stage('docker login')
+    {
+       withCredentials([string(credentialsId: 'dokercredentials', variable: 'dockercredentials')]) {
+        sh "docker login -u siva927 -p ${dockercredentials} "
+       }
+    }
+    stage('pushing the image') 
+     {
+        sh 'docker push siva927/tomcat'
+     }
  }
